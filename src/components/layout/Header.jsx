@@ -10,7 +10,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
     return (
         <header className="bg-slate-800 text-white p-4">
           <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold">John Doe</h1>
+            <h1 className="text-2xl font-bold">Jacob Walter</h1>
             
             <button 
               className="md:hidden"
