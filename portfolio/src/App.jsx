@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React, { useState } from 'react';
+import Header from './components/layout/header';
+import Footer from './components/layout/Footer';
+import AboutMe from './components/sections/AboutMe';
+import Portfolio from './components/sections/Portfolio';
+import Contact from './components/sections/Contact';
+import Resume from './components/sections/Resume';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [currentPage, setCurrentPage] = useState('About Me');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'About Me':
+        return <AboutMe />;
+      case 'Portfolio':
+        return <Portfolio />;
+      case 'Contact':
+        return <Contact />;
+      case 'Resume':
+        return <Resume />;
+      default:
+        return <AboutMe />;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen flex flex-col">
+      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <main className="flex-grow py-8">
+        {renderPage()}
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
-export default App
+export default App;
